@@ -24,7 +24,6 @@ class TextLearnView extends StatelessWidget {
 
       Text(userName ?? ""),
       Text(keys.welcome),
-
       Text(
         ("Hello $name ${name.length}"),
         maxLines: 2,
