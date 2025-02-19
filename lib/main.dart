@@ -29,6 +29,7 @@ import 'package:flutter_exercises/101/text_learn_view.dart';
 import 'package:flutter_exercises/101/card_learn.dart';
 import 'package:flutter_exercises/101/padding_learn.dart';
 import 'package:flutter_exercises/demos/stack_demo_view.dart';
+import 'package:flutter_exercises/screen_ui/login_screen.dart';
 import 'package:flutter_exercises/screen_ui/weight_app_screen.dart';
 import 'demos/my_collections_demos.dart';
 
@@ -48,9 +49,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
           listTileTheme: ListTileThemeData(contentPadding: EdgeInsets.zero),
           inputDecorationTheme: InputDecorationTheme(
-            filled: true,
-            fillColor: Colors.purple,
-            // arka plan rengi
             iconColor: Colors.red,
             border: OutlineInputBorder(),
             floatingLabelStyle: TextStyle(
@@ -70,7 +68,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0,
               systemOverlayStyle: SystemUiOverlayStyle.light)),
-      home: WeightAppScreen(),
+      home: LoginScreen(),
     );
   }
 }
