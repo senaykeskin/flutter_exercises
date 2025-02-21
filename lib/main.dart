@@ -12,6 +12,9 @@ import 'package:flutter_exercises/101/stack_learn.dart';
 import 'package:flutter_exercises/101/statefull_learn.dart';
 import 'package:flutter_exercises/101/statefull_life_cycle_learn.dart';
 import 'package:flutter_exercises/101/text_field_learn.dart';
+import 'package:flutter_exercises/202/model_learn_view.dart';
+import 'package:flutter_exercises/202/service/service_learn_view.dart';
+import 'package:flutter_exercises/202/tab_learn.dart';
 import 'package:flutter_exercises/demos/color_demos_view.dart';
 import 'package:flutter_exercises/demos/color_life_cycle.dart';
 import 'package:flutter_exercises/demos/gpt_note_demos_view.dart';
@@ -40,13 +43,22 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
+
+        tabBarTheme: TabBarTheme(
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.red,
+          indicatorSize: TabBarIndicatorSize.label,
+        ),
+          bottomAppBarTheme: BottomAppBarTheme(
+            shape: CircularNotchedRectangle()
+          ),
+
           listTileTheme: ListTileThemeData(contentPadding: EdgeInsets.zero),
           inputDecorationTheme: InputDecorationTheme(
             iconColor: Colors.red,
@@ -68,7 +80,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0,
               systemOverlayStyle: SystemUiOverlayStyle.light)),
-      home: LoginScreen(),
+      home: ServiceLearnView(),
     );
   }
 }
