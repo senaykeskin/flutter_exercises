@@ -13,8 +13,11 @@ import 'package:flutter_exercises/101/statefull_learn.dart';
 import 'package:flutter_exercises/101/statefull_life_cycle_learn.dart';
 import 'package:flutter_exercises/101/text_field_learn.dart';
 import 'package:flutter_exercises/202/model_learn_view.dart';
+import 'package:flutter_exercises/202/package_learn_view.dart';
 import 'package:flutter_exercises/202/service/service_learn_view.dart';
 import 'package:flutter_exercises/202/tab_learn.dart';
+import 'package:flutter_exercises/202/theme/light_theme.dart';
+import 'package:flutter_exercises/202/theme_learn_view.dart';
 import 'package:flutter_exercises/demos/color_demos_view.dart';
 import 'package:flutter_exercises/demos/color_life_cycle.dart';
 import 'package:flutter_exercises/demos/gpt_note_demos_view.dart';
@@ -35,6 +38,7 @@ import 'package:flutter_exercises/demos/stack_demo_view.dart';
 import 'package:flutter_exercises/screen_ui/login_screen.dart';
 import 'package:flutter_exercises/screen_ui/weight_app_screen.dart';
 import 'demos/my_collections_demos.dart';
+import 'screen_ui/LogInAndSignInScreens/login_screen2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,6 +52,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
+      theme: LightTheme().theme,
+
+
+      /*
       theme: ThemeData.dark().copyWith(
 
         tabBarTheme: TabBarTheme(
@@ -80,7 +88,9 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0,
               systemOverlayStyle: SystemUiOverlayStyle.light)),
-      home: ServiceLearnView(),
+       */
+
+      home: LoginScreen2(),
     );
   }
 }
