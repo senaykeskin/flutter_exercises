@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_exercises/screen_ui/AddCreditCard/add_new_card.dart';
 import 'index.dart';
 
 void main() {
