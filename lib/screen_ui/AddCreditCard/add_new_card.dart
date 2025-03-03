@@ -109,7 +109,7 @@ class _AddNewCardState extends State<AddNewCard> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
+                  SizedBox(
                     height: 60,
                     width: 80,
                     child: DropdownButtonFormField<String>(
