@@ -21,7 +21,9 @@ class _AnswerButtonState extends State<AnswerButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: _backgroundColor
+      ),
       onPressed: () {
         final result = Random().nextInt(10);
         final response = widget.onNumber?.call(result) ?? false;

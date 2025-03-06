@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_exercises/303/call_back_learn.dart';
-import '202/alert_learn.dart';
-import '202/cache/secure_context/secure_context_learn.dart';
-import '202/sheet_learn.dart';
-import '303/part/part_of_learn.dart';
-import 'index.dart';
+import 'package:flutter_exercises/product/global/resource_context.dart';
+import 'package:flutter_exercises/product/global/theme_notifier.dart';
+import 'package:provider/provider.dart';
+import "index.dart";
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      Provider<ResourceContext>(create: (_) => ResourceContext()),
+      ChangeNotifierProvider<ThemeNotifier>(create: (context) => ThemeNotifier())
+    ],
+    builder: (context, child) => MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -18,8 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: LightTheme().theme,
-
+      theme: context.watch<ThemeNotifier>().currentTheme,
 
       /*
       theme: ThemeData.dark().copyWith(
@@ -56,7 +59,7 @@ class MyApp extends StatelessWidget {
               systemOverlayStyle: SystemUiOverlayStyle.light)),
        */
 
-      home: CallBackLearn(),
+      home: ReqResView(),
     );
   }
 }
