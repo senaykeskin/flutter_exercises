@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_exercises/product/global/resource_context.dart';
-import 'package:flutter_exercises/product/global/theme_notifier.dart';
-import 'package:provider/provider.dart';
+
 import "index.dart";
 
 void main() {
@@ -59,7 +57,7 @@ class MyApp extends StatelessWidget {
               systemOverlayStyle: SystemUiOverlayStyle.light)),
        */
 
-      home: ReqResView(),
+      home: WalletScreen(),
     );
   }
 }

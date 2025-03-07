@@ -54,3 +54,7 @@ export '202/sheet_learn.dart';
 export '303/part/part_of_learn.dart';
 export '303/tabbar_advance.dart';
 export 'index.dart';
+export 'package:flutter_exercises/product/global/resource_context.dart';
+export 'package:flutter_exercises/product/global/theme_notifier.dart';
+export 'package:flutter_exercises/screen_ui/WalletScreen/wallet_screen.dart';
+export 'package:provider/provider.dart';
