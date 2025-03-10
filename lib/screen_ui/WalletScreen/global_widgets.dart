@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_exercises/screen_ui/WalletScreen/button_list.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HeaderArea extends StatelessWidget {
@@ -123,22 +124,30 @@ Column card(BuildContext context) {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                    _addAndOutCashButtons(
-                        icon: FontAwesomeIcons.moneyBill,
-                        title: "Add Cash",
-                        backgroundColor: Color(0xff308037),
-                        textColor: Colors.white),
-                    Container(
-                      height: 10,
-                      width: 15,
-                      color: Color(0xffecf1e9),
-                    ),
-                    _addAndOutCashButtons(
-                        icon: Icons.telegram_outlined,
-                        title: "Cash Out",
-                        backgroundColor: Color(0xffecf1e9),
-                        textColor: Color(0xff308037))
-                  ]))
+                        _addAndOutCashButtons(
+                            icon: FontAwesomeIcons.moneyBill,
+                            title: "Add Cash",
+                            backgroundColor: Color(0xff308037),
+                            textColor: Colors.white,
+                            width: 156,
+                            height: 50,
+                            onPress: () {
+                              _showModalBottomSheet(context);
+                            }),
+                        Container(
+                          height: 10,
+                          width: 15,
+                          color: Color(0xffecf1e9),
+                        ),
+                        _addAndOutCashButtons(
+                            icon: Icons.telegram_outlined,
+                            title: "Cash Out",
+                            backgroundColor: Color(0xffecf1e9),
+                            textColor: Color(0xff308037),
+                            width: 156,
+                            height: 50,
+                            onPress: () {})
+                      ]))
             ],
           ),
         ),
@@ -147,17 +156,116 @@ Column card(BuildContext context) {
   );
 }
 
-ElevatedButton _addAndOutCashButtons(
-    {required IconData icon,
-    required String title,
-    required Color backgroundColor,
-    required Color textColor}) {
+Future<dynamic> _showModalBottomSheet(BuildContext context) {
+  return showModalBottomSheet(
+      backgroundColor: Colors.white,
+      isDismissible: true,
+      showDragHandle: true,
+      useSafeArea: true,
+      context: context,
+      builder: (context) {
+        return _AddCashBottomSheet();
+      });
+}
+
+class _AddCashBottomSheet extends StatelessWidget {
+  const _AddCashBottomSheet({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height * 0.35,
+      color: Colors.white,
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.topCenter,
+            child: Text(
+              "Add Cash",
+              style: TextStyle(
+                fontSize: 20,
+                color: Color(0xff144419),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Expanded(
+            child: _AddCashButtons(),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: _addAndOutCashButtons(
+                icon: FontAwesomeIcons.moneyBill,
+                title: "Add Cash",
+                backgroundColor: Color(0xff308037),
+                textColor: Color(0xffecf1e9),
+                width: MediaQuery.of(context).size.width,
+                height: 50,
+                onPress: () {}),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class _AddCashButtons extends StatelessWidget {
+  const _AddCashButtons({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      padding: EdgeInsets.only(top: 30, left: 20, right: 20),
+      itemCount: 6,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        childAspectRatio: 1.8,
+        mainAxisSpacing: 15,
+        crossAxisSpacing: 20,
+      ),
+      itemBuilder: (BuildContext context, int index) {
+        return ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.grey[300],
+            elevation: 0,
+          ),
+          onPressed: () {},
+          child: Text(
+            addCashList[index]['title'] ?? "",
+            style: TextStyle(
+                color: Color(0xff144419),
+                fontWeight: FontWeight.w500,
+                fontSize: 16),
+          ),
+        );
+      },
+    );
+  }
+}
+
+ElevatedButton _addAndOutCashButtons({
+  required IconData icon,
+  required String title,
+  required Color backgroundColor,
+  required Color textColor,
+  required VoidCallback onPress,
+  required double width,
+  required double height,
+}) {
   return ElevatedButton(
     style: ElevatedButton.styleFrom(
-        fixedSize: Size(156, 50),
-        elevation: 0,
-        backgroundColor: backgroundColor),
-    onPressed: () {},
+      fixedSize: Size(width, height),
+      elevation: 0,
+      backgroundColor: backgroundColor,
+    ),
+    onPressed: () {
+      onPress();
+    },
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -170,7 +278,10 @@ ElevatedButton _addAndOutCashButtons(
         Text(
           title,
           style: TextStyle(
-              fontSize: 15, fontWeight: FontWeight.w500, color: textColor),
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+            color: textColor,
+          ),
         )
       ],
     ),
