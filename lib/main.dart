@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_exercises/303/lottie_learn.dart';
+import 'package:flutter_exercises/product/constants/project_items.dart';
+import 'package:flutter_exercises/screen_ui/PegasusHomeScreen/home_screen.dart';
 import "index.dart";
 
 void main() {
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: ProjectItems.projectName,
       debugShowCheckedModeBanner: false,
       theme: context.watch<ThemeNotifier>().currentTheme,
 
@@ -57,7 +59,7 @@ class MyApp extends StatelessWidget {
               systemOverlayStyle: SystemUiOverlayStyle.light)),
        */
 
-      home: WalletScreen(),
+      home: HomeScreen(),
     );
   }
 }
