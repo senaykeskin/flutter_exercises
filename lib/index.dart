@@ -58,3 +58,7 @@ export 'package:flutter_exercises/product/global/resource_context.dart';
 export 'package:flutter_exercises/product/global/theme_notifier.dart';
 export 'package:flutter_exercises/screen_ui/WalletScreen/wallet_screen.dart';
 export 'package:provider/provider.dart';
+export 'package:flutter_exercises/303/lottie_learn.dart';
+export 'package:flutter_exercises/product/constants/project_items.dart';
+export 'package:flutter_exercises/screen_ui/PegasusHomeScreen/home_screen.dart';
+export 'package:flutter_exercises/screen_ui/ShoppingScreen/shopping_screen.dart';
