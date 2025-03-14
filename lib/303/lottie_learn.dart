@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_exercises/index.dart';
 import 'package:flutter_exercises/product/constants/duration_items.dart';
 import 'package:flutter_exercises/product/constants/lottie_items.dart';
+import 'package:flutter_exercises/product/navigator/navigator_routes.dart';
 import 'package:lottie/lottie.dart';
 
 class LottieLearn extends StatefulWidget {
@@ -23,6 +24,12 @@ class _LottieLearnState extends State<LottieLearn>
     super.initState();
     controller = AnimationController(
         vsync: this, duration: DurationItems.durationNormal());
+    navigateToHome();
+  }
+
+  Future<void> navigateToHome() async {
+    await Future.delayed(Duration(seconds: 30));
+    Navigator.of(context).pushReplacementNamed(NavigateRoutes.home.withParaf);
   }
 
   @override

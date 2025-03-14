@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_exercises/303/feed_view.dart';
+import 'package:flutter_exercises/303/navigator/navigate_home_detail_view.dart';
+import 'package:flutter_exercises/303/navigator/navigate_home_view.dart';
+import 'package:flutter_exercises/product/navigator/navigator_custom.dart';
+import 'package:flutter_exercises/product/navigator/navigator_manager.dart';
+import 'package:flutter_exercises/product/navigator/navigator_routes.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import "index.dart";
@@ -13,7 +19,7 @@ void main() {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget with NavigatorCustom {
   const MyApp({super.key});
 
   @override
@@ -59,7 +65,19 @@ class MyApp extends StatelessWidget {
               systemOverlayStyle: SystemUiOverlayStyle.light)),
        */
 
-      home: ShoppingScreen(),
+
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (context) {
+          return const LottieLearn();
+        });
+      },
+
+
+      //routes: NavigatorRoutes().items,
+      onGenerateRoute: onGenerateRoute,
+      navigatorKey: NavigatorManagersss.instance.navigatorGlobalKey,
+
+      //home: ShoppingScreen(),
     );
   }
 }
