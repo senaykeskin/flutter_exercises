@@ -34,12 +34,9 @@ AppBar shoppingAppBar(Color backgroundColor) {
 }
 
 class ProductContainer extends StatelessWidget {
-  const ProductContainer({
-    super.key,
-    required this.index,
-  });
+  const ProductContainer({super.key, required this.product});
 
-  final int index;
+  final Map<String, dynamic> product;
 
   void showToastMessage(BuildContext context) {
     Fluttertoast.showToast(
@@ -59,17 +56,18 @@ class ProductContainer extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Stack(children: [
-        Positioned(
-          top: 10,
-          left: 0,
-          right: 0,
-          child: Image.asset(
-            productList[index]["image"]!,
-            height: 130,
+      child: Stack(
+        children: [
+          Positioned(
+            top: 10,
+            left: 0,
+            right: 0,
+            child: Image.asset(
+              product["image"]!,
+              height: 130,
+            ),
           ),
-        ),
-        Positioned(
+          Positioned(
             top: 160,
             left: 10,
             right: 10,
@@ -78,36 +76,37 @@ class ProductContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  productList[index]["title"]!,
+                  product["title"]!,
                   style: TextStyle(
                       fontSize: 15,
                       color: Colors.black,
                       fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  productList[index]["amount"]!,
+                  product["amount"]!,
                   style: TextStyle(
                       fontSize: 13,
                       color: Colors.black,
                       fontWeight: FontWeight.w400),
                 )
               ],
-            )),
-        Positioned(
-          bottom: 0,
-          left: 10,
-          right: 10,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "\$${productList[index]["price"]!}",
-                style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500),
-              ),
-              IconButton(
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 10,
+            right: 10,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "\$${product["price"]!}",
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500),
+                ),
+                IconButton(
                   onPressed: () {
                     showToastMessage(context);
                   },
@@ -115,14 +114,17 @@ class ProductContainer extends StatelessWidget {
                     Icons.add_circle,
                     size: 40,
                     color: Colors.black,
-                  ))
-            ],
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }
+
 
 class Filters extends StatefulWidget {
   const Filters({super.key, required this.onFilterSelected});
@@ -152,7 +154,7 @@ class _FiltersState extends State<Filters> {
   Widget build(BuildContext context) {
     return Container(
       width: W(context),
-      height: H(context) * 0.7,
+      height: H(context) * 0.3,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(

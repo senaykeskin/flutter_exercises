@@ -63,7 +63,6 @@ class DirectionalButtons extends StatefulWidget {
 class DirectionalButtonsState {}
 
 class _DirectionalButtonsState extends State<DirectionalButtons> {
-
   bool isRoundTrip = true;
 
   @override
@@ -173,12 +172,9 @@ class SelectionButtons extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: TextButton(
                 style: TextButton.styleFrom(
-                  splashFactory: NoSplash.splashFactory,
-                  overlayColor: Colors.transparent
-                ),
-                onPressed: () {
-                  inspect("tıklandı");
-                },
+                    splashFactory: NoSplash.splashFactory,
+                    overlayColor: Colors.transparent),
+                onPressed: () {},
                 child: Text(
                   leftText,
                   style: placeText,
@@ -196,8 +192,7 @@ class SelectionButtons extends StatelessWidget {
               child: TextButton(
                 style: TextButton.styleFrom(
                     splashFactory: NoSplash.splashFactory,
-                    overlayColor: Colors.transparent
-                ),
+                    overlayColor: Colors.transparent),
                 onPressed: () {},
                 child: Text(
                   rightText,

@@ -6,8 +6,8 @@ import 'package:flutter_exercises/index.dart';
 import 'package:flutter_exercises/product/service/project_network_manager.dart';
 import '../view/req_res_view.dart';
 
-abstract class ReqresViewModel extends LoadingStatefull<ReqResView> with ProjectHttpMixin{
-
+abstract class ReqresViewModel extends LoadingStatefull<ReqResView>
+    with ProjectHttpMixin {
   late final IReqresService reqresService;
 
   List<Data> resources = [];
@@ -23,9 +23,6 @@ abstract class ReqresViewModel extends LoadingStatefull<ReqResView> with Project
     changeLoading();
     final response = await reqresService.fetchResourceItem();
     resources = response?.data ?? [];
-      inspect(resources);
     changeLoading();
   }
-
-
 }

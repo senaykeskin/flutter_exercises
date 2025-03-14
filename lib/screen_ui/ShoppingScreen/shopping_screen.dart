@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_exercises/global/constants.dart';
 import 'package:flutter_exercises/screen_ui/ShoppingScreen/product_list.dart';
@@ -15,13 +13,30 @@ class ShoppingScreen extends StatefulWidget {
 
 class _ShoppingScreenState extends State<ShoppingScreen> {
   final Color backgroundColor = Color(0xfff0ece8);
-  List<Map<String, dynamic>> filteredProducts =
-      productList;
+  List<Map<String, dynamic>> filteredProducts = productList;
+  late TextEditingController controller = TextEditingController();
 
   void updateFilteredProducts(List<Map<String, dynamic>> products) {
     setState(() {
       filteredProducts = products;
     });
+  }
+
+  void searchValue(String value) {
+    setState(() {
+      filteredProducts = productList
+          .where((product) => product['title']
+              .toString()
+              .toLowerCase()
+              .contains(value.toLowerCase()))
+          .toList();
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
   }
 
   @override
@@ -46,6 +61,10 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
                       color: Colors.white),
                   child: Center(
                     child: TextField(
+                      onChanged: (value) {
+                        searchValue(value);
+                      },
+                      controller: controller,
                       style: TextStyle(color: Colors.black),
                       cursorColor: Colors.grey,
                       decoration: InputDecoration(
@@ -96,7 +115,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
                     mainAxisSpacing: 15,
                     childAspectRatio: 3 / 4.7),
                 itemBuilder: (BuildContext context, int index) {
-                  return ProductContainer(index: index);
+                  return ProductContainer(product: filteredProducts[index]);
                 },
               ),
             ),
