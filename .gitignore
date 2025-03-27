@@ -11,6 +11,8 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
+lib/screen_ui/weather/apiKey.dart
+apiKey.dart
 
 # IntelliJ related
 *.iml
