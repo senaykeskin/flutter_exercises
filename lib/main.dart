@@ -5,6 +5,7 @@ import 'package:flutter_exercises/303/navigator/navigate_home_view.dart';
 import 'package:flutter_exercises/product/navigator/navigator_custom.dart';
 import 'package:flutter_exercises/product/navigator/navigator_manager.dart';
 import 'package:flutter_exercises/product/navigator/navigator_routes.dart';
+import 'package:flutter_exercises/screen_ui/weather/weather_home_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import "index.dart";
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget with NavigatorCustom {
 
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (context) {
-          return const LottieLearn();
+          return const WeatherHomeScreen();
         });
       },
 
